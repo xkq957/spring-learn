@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="Book" class="com.xkq.spring._02di.Book">
+        <!-- property标签：通过组件类的setXxx()方法给组件对象设置属性 -->
+        <!-- name属性：指定属性名（这个属性名是getXxx()、setXxx()方法定义的，和成员变量无关） -->
+        <!-- value属性：指定属性值 -->
+        <property name="id" value="1001"></property>
+        <property name="name" value="人间失格"></property>
+        <property name="author" value="太宰治"></property>
+        <property name="type" value="小说"></property>
+    </bean>
+
+<!--    constructor-arg标签还有两个属性可以进一步描述构造器参数：-->
+
+<!--    - index属性：指定参数所在位置的索引（从0开始）-->
+<!--    - name属性：指定参数名-->
+    <bean id="Book02" class="com.xkq.spring._02di.Book">
+        <constructor-arg value="1002"></constructor-arg>
+        <constructor-arg value="射雕英雄传"></constructor-arg>
+        <constructor-arg value="金庸"></constructor-arg>
+        <constructor-arg value="武侠"></constructor-arg>
+    </bean>
+
+    <bean id="Book03" class="com.xkq.spring._02di.Book">
+        <constructor-arg name="id" value="1003"></constructor-arg>
+        <constructor-arg index="1" value="三体"></constructor-arg>
+        <constructor-arg value="刘慈欣"></constructor-arg>
+        <constructor-arg value="科幻"></constructor-arg>
+    </bean>
+
+</beans>
