@@ -12,7 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class TestBook {
     @Test
     public void testDIBySet(){
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-di.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("bean-02-di.xml");
         Book book = applicationContext.getBean("Book", Book.class);
         System.out.println(book.toString());
 

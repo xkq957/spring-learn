@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--方式1-->
+<!--    1 创建两个类对象：dept 和 emp-->
+<!--    2 在emp的bean标签里面，使用property引入dept的bean-->
+    <bean id="Department01" class="com.xkq.spring._03di.Department">
+        <property name="dName" value="技术中心"></property>
+        <property name="employees" ref="Employee01"></property>
+    </bean>
+
+    <bean id="Employee01" class="com.xkq.spring._03di.Employee">
+        <property name="name" value="张三"></property>
+        <property name="age" value="25"></property>
+        <property name="job" value="后端开发"></property>
+    </bean>
+
+    <!--方式2 内部bean注入-->
+    <bean id="Department02" class="com.xkq.spring._03di.Department">
+        <!--普通属性注入-->
+        <property name="dName" value="研发中心"></property>
+        <!--内部bean-->
+        <!-- 在一个bean中再声明一个bean就是内部bean -->
+        <!-- 内部bean只能用于给属性赋值，不能在外部通过IOC容器获取，因此可以省略id属性 -->
+        <property name="employees">
+            <bean id="01" class="com.xkq.spring._03di.Employee">
+                <property name="name" value="李四"></property>
+                <property name="age" value="24"></property>
+                <property name="job" value="前端开发"></property>
+            </bean>
+<!--            <bean id ="02" class="com.xkq.spring._03di.Employee">-->
+<!--                <property name="name" value="赵六"></property>-->
+<!--                <property name="age" value="27"></property>-->
+<!--            </bean>-->
+        </property>
+    </bean>
+    
+    <!--方式3 级联属性赋值-->
+    <bean id="Department03" class="com.xkq.spring._03di.Department">
+        <property name="dName" value="服务中心"></property>
+    </bean>
+
+    <bean id="Employee03" class="com.xkq.spring._03di.Employee">
+        <property name="name" value="王五"/>
+        <property name="age" value="26"/>
+        <property name="job" value="项目经理"/>
+        <property name="department" ref="Department03"/>
+        <property name="department.dName" value="测试中心"></property>
+    </bean>
+
+</beans>
