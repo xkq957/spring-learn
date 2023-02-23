@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="teacherA" class="com.xkq.spring._04di_map.Teacher">
+        <property name="tid" value="001"></property>
+        <property name="name" value="刘老师"></property>
+    </bean>
+
+    <bean id="teacherB" class="com.xkq.spring._04di_map.Teacher">
+        <property name="tid" value="002"></property>
+        <property name="name" value="李老师"></property>
+    </bean>
+
+    <bean id="lessonA" class="com.xkq.spring._04di_map.Lesson">
+        <constructor-arg value="课程A"></constructor-arg>
+    </bean>
+    <bean id="lessonB" class="com.xkq.spring._04di_map.Lesson">
+        <constructor-arg value="课程B"></constructor-arg>
+    </bean>
+
+    <!--list集合类型bean-->
+    <util:list id = "lessonList">
+        <ref bean="lessonA"></ref>
+        <ref bean="lessonB"></ref>
+        <ref bean="lessonA"></ref>
+    </util:list>
+
+    <!--list集合类型bean-->
+    <util:map id="teacherMap">
+        <entry>
+            <key>
+                <value>001</value>
+            </key>
+            <ref bean="teacherA"></ref>
+        </entry>
+        <entry>
+            <key>
+                <value>002</value>
+            </key>
+            <ref bean="teacherB"></ref>
+        </entry>
+    </util:map>
+
+    <!--map集合类型bean-->
+    <bean id="studentA" class="com.xkq.spring._04di_map.Student">
+        <property name="sid" value="s001"></property>
+        <property name="name" value="同学1"></property>
+        <property name="lessonList" ref="lessonList"></property>
+        <property name="teacherMap" ref="teacherMap"></property>
+    </bean>
+
+    <!--p命名空间赋值-->
+    <bean id="studentB" class="com.xkq.spring._04di_map.Student"
+          p:sid="s002" p:name="同学2" p:lessonList-ref="lessonList" p:teacherMap-ref="teacherMap"></bean>
+
+</beans>
