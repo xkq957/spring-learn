@@ -10,7 +10,7 @@
     若在IOC中，有多个兼容类型的bean能够为属性赋值，则抛出异常NoUniqueBeanDefinitionException-->
 <!--    <bean id="userController" class="com.xkq.spring._09autowire.controller.UserController" autowire="byType"></bean>-->
 <!--    <bean id="userService" class="com.xkq.spring._09autowire.service.impl.UserServiceImpl" autowire="byType"/>-->
-<!--    <bean id="userDao" class="com.xkq.spring._09autowire.dao.impl.UserDaoImpl" autowire="byType"/>-->
+    <bean id="userDao" class="com.xkq.spring._09autowire.dao.impl.UserDaoImpl" autowire="byType"/>
 
     <!--自动装配方式：byName
     byName：将自动装配的属性的属性名，作为bean的id在IOC容器中匹配相对应的bean进行赋值-->
